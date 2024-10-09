@@ -1,0 +1,57 @@
+[gd_scene load_steps=9 format=3 uid="uid://df5hxmleshoxp"]
+
+[ext_resource type="Texture2D" uid="uid://bnh8877l0u4e0" path="res://dodge_the_creeps_2d_assets/art/playerGrey_walk1.png" id="1_a3odu"]
+[ext_resource type="Script" path="res://dodge_the_creeps_2d_assets/Player/player.gd" id="1_ybhhp"]
+[ext_resource type="Texture2D" uid="uid://b6hk4yp6a4m10" path="res://dodge_the_creeps_2d_assets/art/playerGrey_up1.png" id="2_3osp6"]
+[ext_resource type="Texture2D" uid="uid://k0n64lyfqlxc" path="res://dodge_the_creeps_2d_assets/art/playerGrey_walk2.png" id="2_rvh8r"]
+[ext_resource type="Texture2D" uid="uid://cpwu6y8uldyv" path="res://dodge_the_creeps_2d_assets/art/playerGrey_up2.png" id="3_m0v2g"]
+[ext_resource type="PackedScene" uid="uid://hoo7ibqo7gyj" path="res://dodge_the_creeps_2d_assets/Touchscreen buttons/joystick.tscn" id="6_xwsms"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_p7cp5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_3osp6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_m0v2g")
+}],
+"loop": true,
+"name": &"up",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_a3odu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_rvh8r")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dkbmb"]
+radius = 25.0
+height = 64.0
+
+[node name="Player" type="Area2D"]
+position = Vector2(225, 324)
+script = ExtResource("1_ybhhp")
+metadata/_edit_group_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_p7cp5")
+animation = &"walk"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_dkbmb")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Joystick" parent="CanvasLayer" instance=ExtResource("6_xwsms")]
+position = Vector2(305, 546)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://hoo7ibqo7gyj"]
+
+[ext_resource type="Texture2D" uid="uid://dq0ktagpkepj1" path="res://dodge_the_creeps_2d_assets/Touchscreen buttons/art/shadedDark11.png" id="1_5wa7p"]
+[ext_resource type="Script" path="res://dodge_the_creeps_2d_assets/Touchscreen buttons/joystick.gd" id="2_fncg3"]
+[ext_resource type="Texture2D" uid="uid://dhoxodv4qa0kl" path="res://dodge_the_creeps_2d_assets/Touchscreen buttons/art/shadedDark07.png" id="2_kutfy"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_42jll"]
+radius = 86.81
+
+[node name="Joystick" type="TouchScreenButton"]
+position = Vector2(72, 16)
+scale = Vector2(0.7, 0.7)
+texture_normal = ExtResource("1_5wa7p")
+texture_pressed = ExtResource("1_5wa7p")
+shape = SubResource("CircleShape2D_42jll")
+script = ExtResource("2_fncg3")
+
+[node name="Knob" type="Sprite2D" parent="."]
+position = Vector2(83.2, 83.2)
+scale = Vector2(0.46625, 0.46625)
+texture = ExtResource("2_kutfy")
